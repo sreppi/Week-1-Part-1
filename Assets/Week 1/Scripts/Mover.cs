@@ -21,7 +21,7 @@ public class Mover : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Instantiate(missilePrefab, spawn.position, transform.rotation);
+            Instantiate(missilePrefab, spawn.position, spawn.rotation);
 
         }
 
