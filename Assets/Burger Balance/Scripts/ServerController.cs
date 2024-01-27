@@ -14,6 +14,7 @@ public class ServerController : MonoBehaviour
     public bool enterKitchenMode;
     Vector3 kitchenTransition = new Vector3(0, 0.1f, 0);
     public float timerOne;
+    public BurgerBalanceMode burgerBalanceMode;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class ServerController : MonoBehaviour
     private void FixedUpdate()
     {
         rb.AddForce(direction * directionForce * Time.deltaTime);
+        //Disable server controls and automatically move up into the kitchen.
         if (enterKitchenMode == true)
         {
             direction.x = 0; //This line stops the residual x movements when entering the kitchen door.
