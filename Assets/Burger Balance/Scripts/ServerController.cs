@@ -33,7 +33,7 @@ public class ServerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (enterKitchenMode == true || exitKitchenMode == true) //Took two hours to finally get the right solution!!!
+        if (enterKitchenMode == true || exitKitchenMode == true || burgerBalanceMode.burgerMode == true) //Took two hours to finally get the right solution!!!
         {
             disableControls = true;
         } else

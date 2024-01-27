@@ -66,5 +66,39 @@ public class FallOffDetection : MonoBehaviour
                 burgerSpawner.bottomBunInstantiated = false;
             }
         }
+
+        //This is so that burger pieces aren't being instantiated but also checking off the true and false statment.
+        if (burgerBalanceMode.burgerMode == true)
+        {
+            Destroy(collision.gameObject);
+            if (collision.tag == "TopBun")
+            {
+                burgerSpawner.topBunInstantiated = false;
+            }
+            if (collision.tag == "Pickle")
+            {
+                burgerSpawner.pickleInstantiated = false;
+            }
+            if (collision.tag == "Tomato")
+            {
+                burgerSpawner.tomatoInstantiated = false;
+            }
+            if (collision.tag == "Lettuce")
+            {
+                burgerSpawner.lettuceInstantiated = false;
+            }
+            if (collision.tag == "Cheese")
+            {
+                burgerSpawner.cheeseInstantiated = false;
+            }
+            if (collision.tag == "Patty")
+            {
+                burgerSpawner.pattyInstantiated = false;
+            }
+            if (collision.tag == "BottomBun")
+            {
+                burgerSpawner.bottomBunInstantiated = false;
+            }
+        }
     }
 }

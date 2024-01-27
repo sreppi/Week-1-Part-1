@@ -36,61 +36,40 @@ public class BurgerSpawner : MonoBehaviour
 
     void Update()
     {
-        if (timerOne >= 0.5f)
+        if (timerOne >= 0.01 && timerOne < 2 && !bottomBunInstantiated)
         {
-            if (!bottomBunInstantiated)
-            {
-                Instantiate(bottomBunPrefab, spawn.position, spawn.rotation);
-                bottomBunInstantiated = true;
-            }
+            Instantiate(bottomBunPrefab, spawn.position, spawn.rotation);
+            bottomBunInstantiated = true;
         }
-        if (timerOne >= 3)
+        if (timerOne >= 2 && timerOne < 4 && !pattyInstantiated)
         {
-            if (!pattyInstantiated)
-            {
-                Instantiate(pattyPrefab, spawn.position, spawn.rotation);
-                pattyInstantiated = true;
-            }
+            Instantiate(pattyPrefab, spawn.position, spawn.rotation);
+            pattyInstantiated = true;
         }
-        if (timerOne >= 4.5f)
+        if (timerOne >= 4 && timerOne < 6 && !cheeseInstantiated)
         {
-            if (!cheeseInstantiated)
-            {
-                Instantiate(cheesePrefab, spawn.position, spawn.rotation);
-                cheeseInstantiated = true;
-            }
+            Instantiate(cheesePrefab, spawn.position, spawn.rotation);
+            cheeseInstantiated = true;
         }
-        if (timerOne >= 6)
+        if (timerOne >= 6 && timerOne < 8 && !lettuceInstantiated)
         {
-            if (!lettuceInstantiated)
-            {
-                Instantiate(lettucePrefab, spawn.position, spawn.rotation);
-                lettuceInstantiated = true;
-            }
+            Instantiate(lettucePrefab, spawn.position, spawn.rotation);
+            lettuceInstantiated = true;
         }
-        if (timerOne >= 7.5f)
+        if (timerOne >= 8 && timerOne < 10 && !tomatoInstantiated)
         {
-            if (!tomatoInstantiated)
-            {
-                Instantiate(tomatoPrefab, spawn.position, spawn.rotation);
-                tomatoInstantiated = true;
-            }
+            Instantiate(tomatoPrefab, spawn.position, spawn.rotation);
+            tomatoInstantiated = true;
         }
-        if (timerOne >= 9)
+        if (timerOne >= 10 && timerOne < 12 && !pickleInstantiated)
         {
-            if (!pickleInstantiated)
-            {
-                Instantiate(picklePrefab, spawn.position, spawn.rotation);
-                pickleInstantiated = true;
-            }
+            Instantiate(picklePrefab, spawn.position, spawn.rotation);
+            pickleInstantiated = true;
         }
-        if (timerOne >= 10.5f)
+        if (timerOne >= 12 && timerOne < 14 && !topBunInstantiated)
         {
-            if (!topBunInstantiated)
-            {
-                Instantiate(topBunPrefab, spawn.position, spawn.rotation);
-                topBunInstantiated = true;
-            }
+            Instantiate(topBunPrefab, spawn.position, spawn.rotation);
+            topBunInstantiated = true;
         }
     }
 
@@ -102,12 +81,12 @@ public class BurgerSpawner : MonoBehaviour
             timerOne += Time.deltaTime;
         }
 
-        if (timerOne >= 11)
+        if (timerOne >= 14)
         {
             kitchenDoor.SetActive(false);
             kitchenExitTrigger.SetActive(true);
         }
-        if (timerOne >= 12.5)
+        if (timerOne >= 16)
         {
             burgerBalanceMode.burgerMode = false;
             timerOne = 0;
