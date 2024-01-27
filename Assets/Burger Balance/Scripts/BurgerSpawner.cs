@@ -8,6 +8,9 @@ using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 public class BurgerSpawner : MonoBehaviour
 {
     public BurgerBalanceMode burgerBalanceMode;
+    public ServerController serverController;
+    public GameObject kitchenDoor;
+    public GameObject kitchenExitTrigger;
     public GameObject topBunPrefab;
     public GameObject picklePrefab;
     public GameObject tomatoPrefab;
@@ -28,6 +31,7 @@ public class BurgerSpawner : MonoBehaviour
     void Start()
     {
         timerOne = 0;
+        kitchenExitTrigger.SetActive(false);
     }
 
     void Update()
@@ -98,12 +102,17 @@ public class BurgerSpawner : MonoBehaviour
             timerOne += Time.deltaTime;
         }
 
-        if (timerOne > 11)
+        if (timerOne >= 11)
+        {
+            kitchenDoor.SetActive(false);
+            kitchenExitTrigger.SetActive(true);
+        }
+        if (timerOne >= 12.5)
         {
             burgerBalanceMode.burgerMode = false;
             timerOne = 0;
+            serverController.exitKitchenMode = false;
+            kitchenDoor.SetActive(true);
         }
-
-        Debug.Log("timerOne =" + timerOne);
     }
 }

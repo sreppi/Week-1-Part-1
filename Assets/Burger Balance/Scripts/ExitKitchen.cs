@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnterKitchen : MonoBehaviour
+public class ExitKitchen : MonoBehaviour
 {
     public ServerController serverController;
-    public BurgerSpawner burgerSpawner;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,12 +16,9 @@ public class EnterKitchen : MonoBehaviour
     {
         
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        burgerSpawner.kitchenDoor.SetActive(false);
-        serverController.enterKitchenMode = true;
-        Debug.Log("You've entered the kitchen.");
-
+        serverController.exitKitchenMode = true;
+        Debug.Log("You've exited the kitchen.");
     }
 }

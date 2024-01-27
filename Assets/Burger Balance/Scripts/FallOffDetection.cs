@@ -12,6 +12,8 @@ public class FallOffDetection : MonoBehaviour
     public GameObject floorPattyPrefab;
     public GameObject floorBottomBunPrefab;
     public Transform spawn;
+    public BurgerSpawner burgerSpawner;
+    public BurgerBalanceMode burgerBalanceMode;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,34 +27,44 @@ public class FallOffDetection : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
-        if (collision.tag == "TopBun")
+        if (burgerBalanceMode.burgerMode == false)
+        {
+            Destroy(collision.gameObject);
+            if (collision.tag == "TopBun")
+                {
+                Instantiate(floorTopBunPrefab, spawn.position, spawn.rotation);
+                burgerSpawner.topBunInstantiated = false;
+                }
+            if (collision.tag == "Pickle")
             {
-            Instantiate(floorTopBunPrefab, spawn.position, spawn.rotation);
+                Instantiate(floorPicklePrefab, spawn.position, spawn.rotation);
+                burgerSpawner.pickleInstantiated = false;
             }
-        if (collision.tag == "Pickle")
-        {
-            Instantiate(floorPicklePrefab, spawn.position, spawn.rotation);
-        }
-        if (collision.tag == "Tomato")
-        {
-            Instantiate(floorTomatoPrefab, spawn.position, spawn.rotation);
-        }
-        if (collision.tag == "Lettuce")
-        {
-            Instantiate(floorLettucePrefab, spawn.position, spawn.rotation);
-        }
-        if (collision.tag == "Cheese")
-        {
-            Instantiate(floorCheesePrefab, spawn.position, spawn.rotation);
-        }
-        if (collision.tag == "Patty")
-        {
-            Instantiate(floorPattyPrefab, spawn.position, spawn.rotation);
-        }
-        if (collision.tag == "BottomBun")
-        {
-            Instantiate(floorBottomBunPrefab, spawn.position, spawn.rotation);
+            if (collision.tag == "Tomato")
+            {
+                Instantiate(floorTomatoPrefab, spawn.position, spawn.rotation);
+                burgerSpawner.tomatoInstantiated = false;
+            }
+            if (collision.tag == "Lettuce")
+            {
+                Instantiate(floorLettucePrefab, spawn.position, spawn.rotation);
+                burgerSpawner.lettuceInstantiated = false;
+            }
+            if (collision.tag == "Cheese")
+            {
+                Instantiate(floorCheesePrefab, spawn.position, spawn.rotation);
+                burgerSpawner.cheeseInstantiated = false;
+            }
+            if (collision.tag == "Patty")
+            {
+                Instantiate(floorPattyPrefab, spawn.position, spawn.rotation);
+                burgerSpawner.pattyInstantiated = false;
+            }
+            if (collision.tag == "BottomBun")
+            {
+                Instantiate(floorBottomBunPrefab, spawn.position, spawn.rotation);
+                burgerSpawner.bottomBunInstantiated = false;
+            }
         }
     }
 }
