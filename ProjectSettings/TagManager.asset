@@ -13,6 +13,8 @@ TagManager:
   - Patty
   - BottomBun
   - Wall
+  - LeftBoundary
+  - RightBoundary
   layers:
   - Default
   - TransparentFX
@@ -23,8 +25,8 @@ TagManager:
   - Lever
   - Food
   - Wall
-  - 
-  - 
+  - Plate
+  - Plate Center
   - 
   - 
   - 

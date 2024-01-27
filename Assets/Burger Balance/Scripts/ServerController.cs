@@ -10,6 +10,7 @@ public class ServerController : MonoBehaviour
     public float directionForce;
     public GameObject server;
     public bool wallBump;
+    public bool onFood;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,7 @@ public class ServerController : MonoBehaviour
         if (collision.tag == "Floor Food")
         {
             rb.drag = 0;
+            onFood = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
