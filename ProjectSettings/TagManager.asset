@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Floor Food
+  - Tomato
+  - TopBun
+  - Pickle
+  - Cheese
+  - Lettuce
+  - Patty
+  - BottomBun
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -12,8 +21,8 @@ TagManager:
   - Water
   - UI
   - Lever
-  - 
-  - 
+  - Food
+  - Wall
   - 
   - 
   - 
