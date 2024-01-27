@@ -13,8 +13,7 @@ TagManager:
   - Patty
   - BottomBun
   - Wall
-  - LeftBoundary
-  - RightBoundary
+  - BurgerModeTrigger
   layers:
   - Default
   - TransparentFX

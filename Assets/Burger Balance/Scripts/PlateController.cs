@@ -15,7 +15,6 @@ public class PlateController : MonoBehaviour
     public float timerOne;
     public float timerTwo;  
     int randomTiltSide;
-    public bool touchLeft;
     Vector3 repositionPlate = new Vector3(0.04f, 0, 0);
 
     // Start is called before the first frame update
@@ -107,14 +106,12 @@ public class PlateController : MonoBehaviour
                     transform.Rotate(0, 0, 2.5f);
                 }
             }
-
         }
         if (timerTwo > 0.8)
         {
             serverController.onFood = false;
             randomTiltSide = Random.Range(0, 2);
         }
-
             //Stops the plate from reaching off screen.
             if (transform.position.x < -4.5)
         {
