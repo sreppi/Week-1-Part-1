@@ -39,13 +39,11 @@ public class BurgerSpawner : MonoBehaviour
     public bool topBunInstantiated;
     public float spawnPosition;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         timerOne = 0;
         kitchenExitTrigger.SetActive(false);
-        spawnPosition = Random.Range(-4, 5);
+        spawnPosition = Random.Range(-3, 4);
     }
 
     void Update()
@@ -55,47 +53,46 @@ public class BurgerSpawner : MonoBehaviour
         {
             bottomBun = Instantiate(bottomBunPrefab, xReposition, spawn.rotation);
             bottomBunInstantiated = true;
-            spawnPosition = Random.Range(-4, 5);
+            spawnPosition = Random.Range(-3, 4);
         }
         if (timerOne >= 2 && timerOne < 4 && !pattyInstantiated)
         {
             patty = Instantiate(pattyPrefab, xReposition, spawn.rotation);
             pattyInstantiated = true;
-            spawnPosition = Random.Range(-4, 5);
+            spawnPosition = Random.Range(-3, 4);
         }
         if (timerOne >= 4 && timerOne < 6 && !cheeseInstantiated)
         {
             cheese = Instantiate(cheesePrefab, xReposition, spawn.rotation);
             cheeseInstantiated = true;
-            spawnPosition = Random.Range(-4, 5);
+            spawnPosition = Random.Range(-3, 4);
         }
         if (timerOne >= 6 && timerOne < 8 && !lettuceInstantiated)
         {
             lettuce = Instantiate(lettucePrefab, xReposition, spawn.rotation);
             lettuceInstantiated = true;
-            spawnPosition = Random.Range(-4, 5);
+            spawnPosition = Random.Range(-3, 4);
         }
         if (timerOne >= 8 && timerOne < 10 && !tomatoInstantiated)
         {
             tomato = Instantiate(tomatoPrefab, xReposition, spawn.rotation);
             tomatoInstantiated = true;
-            spawnPosition = Random.Range(-4, 5);
+            spawnPosition = Random.Range(-3, 4);
         }
         if (timerOne >= 10 && timerOne < 12 && !pickleInstantiated)
         {
             pickle = Instantiate(picklePrefab, xReposition, spawn.rotation);
             pickleInstantiated = true;
-            spawnPosition = Random.Range(-4, 5);
+            spawnPosition = Random.Range(-3, 4);
         }
         if (timerOne >= 12 && timerOne < 14 && !topBunInstantiated)
         {
             topBun = Instantiate(topBunPrefab, xReposition, spawn.rotation);
             topBunInstantiated = true;
-            spawnPosition = Random.Range(-4, 5);
+            spawnPosition = Random.Range(-3, 4);
         }
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if (burgerBalanceMode.burgerMode == true)
@@ -103,6 +100,7 @@ public class BurgerSpawner : MonoBehaviour
             timerOne += Time.deltaTime;
         }
 
+        //Kitchen door is opened, and a exit trigger making the player move down automatically. This also makes server enter "serving mode" where they can deliever the food.
         if (timerOne >= 14)
         {
             kitchenDoor.SetActive(false);

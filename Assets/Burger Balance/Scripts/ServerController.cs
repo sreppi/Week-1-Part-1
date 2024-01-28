@@ -7,21 +7,20 @@ using UnityEngine.UIElements;
 public class ServerController : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public GameObject server;
     Vector2 direction;
     public float directionForce;
-    public GameObject server;
     public bool wallBump;
     public bool onFood;
     public bool enterKitchenMode;
     public bool exitKitchenMode;
-    Vector3 kitchenTransition = new Vector3(0, 0.1f, 0);
+    Vector3 kitchenTransition = new Vector3(0, 0.1f, 0); //A variable that moves the player automatically
     public float timerOne;
-    public BurgerBalanceMode burgerBalanceMode;
     public bool disableControls;
+    public BurgerBalanceMode burgerBalanceMode;
     public BurgerSpawner burgerSpawner;
     public TableServing tableServing;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,7 +31,6 @@ public class ServerController : MonoBehaviour
         timerOne = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (enterKitchenMode == true || exitKitchenMode == true || burgerBalanceMode.burgerMode == true) //Took two hours to finally get the right solution!!!
@@ -56,10 +54,10 @@ public class ServerController : MonoBehaviour
         if (enterKitchenMode == true)
         {
             direction.x = 0; //This line stops the residual x movements when entering the kitchen door.
-            direction.y = 1;
+            direction.y = 1; //This line makes sure that the speed is always the same when entering and exiting.
             rb.transform.position += kitchenTransition * Time.deltaTime;
         } 
-
+        //Moving out of the kitchen.
         if (exitKitchenMode == true)
         {
             direction.x = 0;
@@ -75,7 +73,8 @@ public class ServerController : MonoBehaviour
             onFood = true;
         }
         if (collision.tag == "Table")
-        {
+        {   
+            //Successful delivery. Might need to change this, maybe something that can group delete all this... Labels...?
             Destroy(burgerSpawner.topBun);
             Destroy(burgerSpawner.pickle);
             Destroy(burgerSpawner.tomato);

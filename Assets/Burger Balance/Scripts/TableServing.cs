@@ -22,9 +22,9 @@ public class TableServing : MonoBehaviour
     public bool servingMode;
     public int randomTable;
 
-    // Start is called before the first frame update
     void Start()
     {
+        //Turn off all tables and serving mode at the start of the game.
         table1.SetActive(false);
         table2.SetActive(false);
         table3.SetActive(false);
@@ -43,12 +43,11 @@ public class TableServing : MonoBehaviour
         servingMode = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (servingMode == false) 
         {
-            randomTable = Random.Range(1, 16);
+            randomTable = Random.Range(1, 16); //Random number between 1-15, allows 1 table to be served.
         }
         if (servingMode == true)
         {
