@@ -73,40 +73,50 @@ public class ServerController : MonoBehaviour
             onFood = true;
         }
         if (collision.tag == "Table")
-        {   
-            //Successful delivery. Might need to change this, maybe something that can group delete all this... Labels...?
-            Destroy(burgerSpawner.topBun);
-            Destroy(burgerSpawner.pickle);
-            Destroy(burgerSpawner.tomato);
-            Destroy(burgerSpawner.lettuce);
-            Destroy(burgerSpawner.cheese);
-            Destroy(burgerSpawner.patty);
-            Destroy(burgerSpawner.bottomBun);
+        {
+            //Only if you have at least ONE ingredient on the plate.
+            if (burgerSpawner.topBunInstantiated == true ||
+            burgerSpawner.pickleInstantiated == true ||
+            burgerSpawner.tomatoInstantiated == true ||
+            burgerSpawner.lettuceInstantiated == true ||
+            burgerSpawner.cheeseInstantiated == true ||
+            burgerSpawner.pattyInstantiated == true ||
+            burgerSpawner.bottomBunInstantiated == true)
+            {
+                //Successful delivery. Might need to change this, maybe something that can group delete all this... Labels...?
+                Destroy(burgerSpawner.topBun);
+                Destroy(burgerSpawner.pickle);
+                Destroy(burgerSpawner.tomato);
+                Destroy(burgerSpawner.lettuce);
+                Destroy(burgerSpawner.cheese);
+                Destroy(burgerSpawner.patty);
+                Destroy(burgerSpawner.bottomBun);
 
-            burgerSpawner.topBunInstantiated = false;
-            burgerSpawner.pickleInstantiated = false;
-            burgerSpawner.tomatoInstantiated = false;
-            burgerSpawner.lettuceInstantiated = false;
-            burgerSpawner.cheeseInstantiated = false;
-            burgerSpawner.pattyInstantiated = false;
-            burgerSpawner.bottomBunInstantiated = false;
+                burgerSpawner.topBunInstantiated = false;
+                burgerSpawner.pickleInstantiated = false;
+                burgerSpawner.tomatoInstantiated = false;
+                burgerSpawner.lettuceInstantiated = false;
+                burgerSpawner.cheeseInstantiated = false;
+                burgerSpawner.pattyInstantiated = false;
+                burgerSpawner.bottomBunInstantiated = false;
 
-            tableServing.table1.SetActive(false);
-            tableServing.table2.SetActive(false);
-            tableServing.table3.SetActive(false);
-            tableServing.table4.SetActive(false);
-            tableServing.table5.SetActive(false);
-            tableServing.table6.SetActive(false);
-            tableServing.table7.SetActive(false);
-            tableServing.table8.SetActive(false);
-            tableServing.table9.SetActive(false);
-            tableServing.table10.SetActive(false);
-            tableServing.table11.SetActive(false);
-            tableServing.table12.SetActive(false);
-            tableServing.table13.SetActive(false);
-            tableServing.table14.SetActive(false);
-            tableServing.table15.SetActive(false);
-            tableServing.servingMode = false;
+                tableServing.table1.SetActive(false);
+                tableServing.table2.SetActive(false);
+                tableServing.table3.SetActive(false);
+                tableServing.table4.SetActive(false);
+                tableServing.table5.SetActive(false);
+                tableServing.table6.SetActive(false);
+                tableServing.table7.SetActive(false);
+                tableServing.table8.SetActive(false);
+                tableServing.table9.SetActive(false);
+                tableServing.table10.SetActive(false);
+                tableServing.table11.SetActive(false);
+                tableServing.table12.SetActive(false);
+                tableServing.table13.SetActive(false);
+                tableServing.table14.SetActive(false);
+                tableServing.table15.SetActive(false);
+                tableServing.servingMode = false;
+            }
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

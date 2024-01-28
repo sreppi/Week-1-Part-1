@@ -47,7 +47,7 @@ public class TableServing : MonoBehaviour
     {
         if (servingMode == false) 
         {
-            randomTable = Random.Range(1, 16); //Random number between 1-15, allows 1 table to be served.
+            randomTable = Random.Range(1, 11); //Random number between 1-10, allows 1 table to be served.
         }
         if (servingMode == true)
         {
@@ -89,27 +89,27 @@ public class TableServing : MonoBehaviour
             }
             if (randomTable == 10)
             {
-                table10.SetActive(true);
+                table15.SetActive(true);
             }
             if (randomTable == 11)
             {
-                table11.SetActive(true);
+                table11.SetActive(true); //Edited out
             }
             if (randomTable == 12)
             {
-                table12.SetActive(true);
+                table12.SetActive(true); //Edited out
             }
             if (randomTable == 13)
             {
-                table13.SetActive(true);
+                table13.SetActive(true); //Edited out
             }
             if (randomTable == 14)
             {
-                table14.SetActive(true);
+                table14.SetActive(true); //Edited out
             }
             if (randomTable == 15)
             {
-                table15.SetActive(true);
+                table15.SetActive(true); //Edited out
             }
         }
     }
