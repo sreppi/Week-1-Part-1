@@ -18,6 +18,8 @@ public class ServerController : MonoBehaviour
     public float timerOne;
     public BurgerBalanceMode burgerBalanceMode;
     public bool disableControls;
+    public BurgerSpawner burgerSpawner;
+    public TableServing tableServing;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +58,6 @@ public class ServerController : MonoBehaviour
             direction.x = 0; //This line stops the residual x movements when entering the kitchen door.
             direction.y = 1;
             rb.transform.position += kitchenTransition * Time.deltaTime;
-            return;
         } 
 
         if (exitKitchenMode == true)
@@ -72,6 +73,41 @@ public class ServerController : MonoBehaviour
         {
             rb.drag = 0;
             onFood = true;
+        }
+        if (collision.tag == "Table")
+        {
+            Destroy(burgerSpawner.topBun);
+            Destroy(burgerSpawner.pickle);
+            Destroy(burgerSpawner.tomato);
+            Destroy(burgerSpawner.lettuce);
+            Destroy(burgerSpawner.cheese);
+            Destroy(burgerSpawner.patty);
+            Destroy(burgerSpawner.bottomBun);
+
+            burgerSpawner.topBunInstantiated = false;
+            burgerSpawner.pickleInstantiated = false;
+            burgerSpawner.tomatoInstantiated = false;
+            burgerSpawner.lettuceInstantiated = false;
+            burgerSpawner.cheeseInstantiated = false;
+            burgerSpawner.pattyInstantiated = false;
+            burgerSpawner.bottomBunInstantiated = false;
+
+            tableServing.table1.SetActive(false);
+            tableServing.table2.SetActive(false);
+            tableServing.table3.SetActive(false);
+            tableServing.table4.SetActive(false);
+            tableServing.table5.SetActive(false);
+            tableServing.table6.SetActive(false);
+            tableServing.table7.SetActive(false);
+            tableServing.table8.SetActive(false);
+            tableServing.table9.SetActive(false);
+            tableServing.table10.SetActive(false);
+            tableServing.table11.SetActive(false);
+            tableServing.table12.SetActive(false);
+            tableServing.table13.SetActive(false);
+            tableServing.table14.SetActive(false);
+            tableServing.table15.SetActive(false);
+            tableServing.servingMode = false;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

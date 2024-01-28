@@ -31,10 +31,10 @@ public class FallOffDetection : MonoBehaviour
         {
             Destroy(collision.gameObject);
             if (collision.tag == "TopBun")
-                {
+            {
                 Instantiate(floorTopBunPrefab, spawn.position, spawn.rotation);
                 burgerSpawner.topBunInstantiated = false;
-                }
+            }
             if (collision.tag == "Pickle")
             {
                 Instantiate(floorPicklePrefab, spawn.position, spawn.rotation);

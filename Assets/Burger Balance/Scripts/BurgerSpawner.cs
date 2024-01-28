@@ -1,23 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 using static Cinemachine.CinemachineTriggerAction.ActionSettings;
 
 public class BurgerSpawner : MonoBehaviour
 {
     public BurgerBalanceMode burgerBalanceMode;
     public ServerController serverController;
+    public TableServing tableServing;
     public GameObject kitchenDoor;
     public GameObject kitchenExitTrigger;
     public GameObject topBunPrefab;
+    public GameObject topBun;
     public GameObject picklePrefab;
+    public GameObject pickle;
     public GameObject tomatoPrefab;
+    public GameObject tomato;
     public GameObject lettucePrefab;
+    public GameObject lettuce;
     public GameObject cheesePrefab;
+    public GameObject cheese;
     public GameObject pattyPrefab;
+    public GameObject patty;
     public GameObject bottomBunPrefab;
+    public GameObject bottomBun;
     public Transform spawn;
     public float timerOne;
     public bool bottomBunInstantiated;
@@ -27,49 +37,61 @@ public class BurgerSpawner : MonoBehaviour
     public bool tomatoInstantiated;
     public bool pickleInstantiated;
     public bool topBunInstantiated;
+    public float spawnPosition;
+
+
     // Start is called before the first frame update
     void Start()
     {
         timerOne = 0;
         kitchenExitTrigger.SetActive(false);
+        spawnPosition = Random.Range(-4, 5);
     }
 
     void Update()
     {
+        Vector3 xReposition = new Vector3(spawnPosition, 13, 0);
         if (timerOne >= 0.01 && timerOne < 2 && !bottomBunInstantiated)
         {
-            Instantiate(bottomBunPrefab, spawn.position, spawn.rotation);
+            bottomBun = Instantiate(bottomBunPrefab, xReposition, spawn.rotation);
             bottomBunInstantiated = true;
+            spawnPosition = Random.Range(-4, 5);
         }
         if (timerOne >= 2 && timerOne < 4 && !pattyInstantiated)
         {
-            Instantiate(pattyPrefab, spawn.position, spawn.rotation);
+            patty = Instantiate(pattyPrefab, xReposition, spawn.rotation);
             pattyInstantiated = true;
+            spawnPosition = Random.Range(-4, 5);
         }
         if (timerOne >= 4 && timerOne < 6 && !cheeseInstantiated)
         {
-            Instantiate(cheesePrefab, spawn.position, spawn.rotation);
+            cheese = Instantiate(cheesePrefab, xReposition, spawn.rotation);
             cheeseInstantiated = true;
+            spawnPosition = Random.Range(-4, 5);
         }
         if (timerOne >= 6 && timerOne < 8 && !lettuceInstantiated)
         {
-            Instantiate(lettucePrefab, spawn.position, spawn.rotation);
+            lettuce = Instantiate(lettucePrefab, xReposition, spawn.rotation);
             lettuceInstantiated = true;
+            spawnPosition = Random.Range(-4, 5);
         }
         if (timerOne >= 8 && timerOne < 10 && !tomatoInstantiated)
         {
-            Instantiate(tomatoPrefab, spawn.position, spawn.rotation);
+            tomato = Instantiate(tomatoPrefab, xReposition, spawn.rotation);
             tomatoInstantiated = true;
+            spawnPosition = Random.Range(-4, 5);
         }
         if (timerOne >= 10 && timerOne < 12 && !pickleInstantiated)
         {
-            Instantiate(picklePrefab, spawn.position, spawn.rotation);
+            pickle = Instantiate(picklePrefab, xReposition, spawn.rotation);
             pickleInstantiated = true;
+            spawnPosition = Random.Range(-4, 5);
         }
         if (timerOne >= 12 && timerOne < 14 && !topBunInstantiated)
         {
-            Instantiate(topBunPrefab, spawn.position, spawn.rotation);
+            topBun = Instantiate(topBunPrefab, xReposition, spawn.rotation);
             topBunInstantiated = true;
+            spawnPosition = Random.Range(-4, 5);
         }
     }
 
@@ -85,12 +107,15 @@ public class BurgerSpawner : MonoBehaviour
         {
             kitchenDoor.SetActive(false);
             kitchenExitTrigger.SetActive(true);
+            tableServing.servingMode = true;
         }
+        //This is the end of Burger Building Mode
         if (timerOne >= 16)
         {
             burgerBalanceMode.burgerMode = false;
             timerOne = 0;
             serverController.exitKitchenMode = false;
+            kitchenExitTrigger.SetActive(false);
             kitchenDoor.SetActive(true);
         }
     }

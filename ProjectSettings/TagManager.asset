@@ -14,6 +14,7 @@ TagManager:
   - BottomBun
   - Wall
   - BurgerModeTrigger
+  - Table
   layers:
   - Default
   - TransparentFX
