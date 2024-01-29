@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -8,8 +10,6 @@ public class ServerController : MonoBehaviour
 {
     public Rigidbody2D rb;
     public GameObject server;
-    Vector2 direction;
-    public float directionForce;
     public bool wallBump;
     public bool onFood;
     public bool enterKitchenMode;
@@ -20,6 +20,9 @@ public class ServerController : MonoBehaviour
     public BurgerBalanceMode burgerBalanceMode;
     public BurgerSpawner burgerSpawner;
     public TableServing tableServing;
+
+    Vector2 direction;
+    public float directionForce;
 
     void Start()
     {
@@ -46,6 +49,7 @@ public class ServerController : MonoBehaviour
             direction.x = Input.GetAxis("Horizontal");
             direction.y = Input.GetAxis("Vertical");
         }
+
     }
     private void FixedUpdate()
     {
@@ -135,5 +139,4 @@ public class ServerController : MonoBehaviour
             //Debug.Log("You bumped into a wall.");
         }
     }
-
 }
